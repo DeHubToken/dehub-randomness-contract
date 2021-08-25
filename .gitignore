@@ -1,0 +1,13 @@
+node_modules
+.env
+
+#Hardhat files
+cache
+artifacts
+
+.DS_Store
+
+/data
+/secrets.json
+/dehub-randomness.code-workspace
+/.vscode
