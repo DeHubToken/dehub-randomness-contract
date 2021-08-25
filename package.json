@@ -6,8 +6,8 @@
 	"scripts": {
 		"test": "npx hardhat test",
 		"compile": "npx hardhat compile --force",
-		"launch:node:testnet": "npx hardhat node --fork $(grep MORALIS_BSC_TESTNET_ARCHIVE_URL ./.env) --fork-block-number 11385714",
-		"launch:node:mainnet": "npx hardhat node --fork $(grep MORALIS_BSC_MAINNET_ARCHIVE_URL ./.env) --fork-block-number 10164294",
+		"fork:testnet": "npx hardhat node --fork $(dotenv -p MORALIS_BSC_TESTNET_ARCHIVE_URL) --fork-block-number 11385714",
+		"fork:mainnet": "npx hardhat node --fork $(dotenv -p MORALIS_BSC_MAINNET_ARCHIVE_URL) --fork-block-number 10164294",
 		"deploy:localhost": "npx hardhat run --network localhost scripts/script.ts",
 		"console:localhost": "npx hardhat console --network localhost",
 		"console:testnet": "npx hardhat console --network testnet",
@@ -36,6 +36,8 @@
 		"@types/mocha": "^9.0.0",
 		"@types/node": "^16.7.1",
 		"chai": "^4.3.4",
+		"cross-var": "^1.1.0",
+		"dotenv": "^10.0.0",
 		"ethereum-waffle": "^3.4.0",
 		"ethers": "^5.4.5",
 		"hardhat": "^2.6.1",
@@ -43,6 +45,7 @@
 		"hardhat-gas-reporter": "^1.0.4",
 		"hardhat-preprocessor": "^0.1.4",
 		"hardhat-tracer": "^1.0.0-alpha.6",
+		"solidity-coverage": "^0.7.16",
 		"ts-node": "^10.2.1",
 		"typescript": "^4.3.5"
 	}
