@@ -20,9 +20,9 @@ contract MockERC20 is ERC20 {
 	 *      functionality required in mocking the random number calls.
 	 */
 	function transferAndCall(
-		// address to, 
-		// uint256 value, 
-		// bytes calldata data
+		address to, 
+		uint256 value, 
+		bytes calldata data
 	) 
 		external 
 		pure

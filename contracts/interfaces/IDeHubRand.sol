@@ -5,7 +5,7 @@ interface IDeHubRand {
 	/**
 	 * Requests randomness
 	 */
-	function getRandomNumber() external;
+	function getRandomNumber() external returns (bytes32);
 
 	/**
 	 * @notice View latest id for a requesting contract

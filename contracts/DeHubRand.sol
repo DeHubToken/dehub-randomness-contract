@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.4;
 
 import "hardhat/console.sol";
 import "@openzeppelin/contracts/utils/Context.sol";
@@ -57,8 +57,9 @@ contract DeHubRand is VRFConsumerBase, IDeHubRand, Ownable {
 	/**
 	 * @notice Request randomness
 	 */
-	function getRandomNumber() external override {
+	function getRandomNumber() external override returns(bytes32) {
 		address sender = _msgSender();
+		console.log("Randomness requested by:", sender);
 		require(hasAccess[sender], "Contract has no access.");
 		require(keyHash != bytes32(0), "Must have valid key hash.");
 		require(LINK.balanceOf(address(this)) >= fee, "Not enough LINK tokens.");
@@ -67,8 +68,11 @@ contract DeHubRand is VRFConsumerBase, IDeHubRand, Ownable {
 		// fulfillRandomness callback is called.
 		bytes32 requestId = requestRandomness(keyHash, fee);
 		requesters[requestId] = sender;
+		console.log("requestId bellow:");
+		console.logBytes32(requestId);
 		console.log("requesters[requestId]:", requesters[requestId]);
 		emit RandomnessRequested(requestId, sender);
+		return requestId;
 	}
 
 	/**
