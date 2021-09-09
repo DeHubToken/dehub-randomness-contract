@@ -137,6 +137,7 @@ contract DeHubRand is VRFConsumerBase, IDeHubRand, Ownable {
 		bytes32 requestId, 
 		uint256 randomness
 	) internal override {
+		// Will return 6 random numbers with 1 in the begginning (ignore that first digit when parsing).
 		uint32 randomResult = uint32(1000000 + (randomness % 1000000));
 		address requester = requesters[requestId];
 		randomResults[requester] = randomResult;

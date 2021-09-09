@@ -4,10 +4,11 @@ pragma solidity ^0.8.4;
 
 import "../interfaces/IDeHubRandConsumer.sol";
 import "../interfaces/IDeHubRand.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "hardhat/console.sol";
 
 // THIS CONTRACT IS ONLY FOR TESTING
-contract MockRandConsumer is IDeHubRandConsumer {
+contract MockRandConsumer is IDeHubRandConsumer, Ownable {
 	// Storing of the randomness generator 
 	IDeHubRand internal randomGenerator_;
 	// Request ID for random number
@@ -28,7 +29,7 @@ contract MockRandConsumer is IDeHubRandConsumer {
 	// ONLY FOR TESTING DIRECT REQUESTS OF RANDOM NUMBERS THROUGH DEHUBRAND CONTRACT
 	// In real life scenarion 'randomGenerator_.getRandomNumber()' should be called
 	// inside the contract business logic (e.x. draw numbers for lottery etc.).
-	function getRandomNumber() external {
+	function getRandomNumber() external onlyOwner {
 		requestId_ = randomGenerator_.getRandomNumber();
 		console.log("requestId bellow:");
 		console.logBytes32(requestId_);
