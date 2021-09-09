@@ -74,7 +74,7 @@ async function main() {
 	// Mocking the VRF Coordinator contract for random request fulfillment
 	await mockVRFCoordInst
 		.connect(deployer)
-		.callBackWithRandomness(requestId, testing.random, randGenInst.address);
+		.callBackWithRandomness(requestId, testing.mockSeed, randGenInst.address);
 	// Saving the info to be logged in the table (deployer address)
 	const linkLog = {
 		Label: 'Deployed Mock Link Token Address',
@@ -92,6 +92,10 @@ async function main() {
 		Label: 'DeHubRand Link Balance',
 		Info: linkBalance,
 	};
+	const mockConsumerLog = {
+		Label: 'Deployed Mock consumer Token Address',
+		Info: mockConsumerInst.address,
+	};
 
 	console.table([
 		deployerLog,
@@ -100,6 +104,7 @@ async function main() {
 		mockVRFCoordLog,
 		randGenLog,
 		randGenLinkBalanceLog,
+		mockConsumerLog,
 	]);
 }
 

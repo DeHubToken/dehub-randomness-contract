@@ -1,5 +1,6 @@
 import { ethers } from 'ethers';
 
+// https://docs.chain.link/docs/vrf-contracts/#binance-smart-chain-mainnet
 export const chainLink = {
 	mainnet: {
 		token: '0x404460C6A5EdE2D891e8297795264fDe62ADBB75',
@@ -29,7 +30,7 @@ export const amounts = {
 };
 
 export const testing = {
-	random: ethers.utils.parseUnits(
+	mockSeed: ethers.utils.parseUnits(
 		'71812290232383789158325313353218754072886144180308695307717334628590412940628',
 		0
 	),

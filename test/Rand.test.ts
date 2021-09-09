@@ -84,7 +84,7 @@ describe('DeHubRand contract', function () {
 					.connect(owner)
 					.callBackWithRandomness(
 						requestId,
-						testing.random,
+						testing.mockSeed,
 						randGenInst.address
 					)
 			)
