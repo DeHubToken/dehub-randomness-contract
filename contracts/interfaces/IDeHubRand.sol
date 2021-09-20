@@ -16,4 +16,9 @@ interface IDeHubRand {
 	 * Views random result
 	 */
 	function viewRandomResult(address _contractAddr) external view returns (uint32);
+
+	/**
+	 * Views random result
+	 */
+	function viewRandomResult256(address _contractAddr) external view returns (uint256);
 }

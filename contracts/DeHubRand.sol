@@ -21,7 +21,7 @@ contract DeHubRand is VRFConsumerBase, IDeHubRand, Ownable {
 	uint256 public fee;
 	// Only these contracts will have access to this generator.
 	mapping(address => bool) public hasAccess;
-	mapping(address => uint32) public randomResults;
+	mapping(address => uint256) public randomResults; 
 	// Link latest request id with the requesting contract.
 	// This is so that we can keep track of who to assign the result to 
 	// when it comes back.
@@ -127,6 +127,15 @@ contract DeHubRand is VRFConsumerBase, IDeHubRand, Ownable {
 	function viewRandomResult(
 		address _contractAddr
 	) external view override returns (uint32) {
+		return uint32(1000000 + (randomResults[_contractAddr] % 1000000));
+	}
+
+	/**
+	 * @notice View random result
+	 */
+	function viewRandomResult256(
+		address _contractAddr
+	) external view override returns (uint256) {
 		return randomResults[_contractAddr];
 	}
 
@@ -138,11 +147,10 @@ contract DeHubRand is VRFConsumerBase, IDeHubRand, Ownable {
 		uint256 randomness
 	) internal override {
 		// Will return 6 random numbers with 1 in the begginning (ignore that first digit when parsing).
-		uint32 randomResult = uint32(1000000 + (randomness % 1000000));
 		address requester = requesters[requestId];
-		randomResults[requester] = randomResult;
+		randomResults[requester] = randomness;
 		latestIds[requester] = IDeHubRandConsumer(requester).viewCurrentTaskId();
-		console.log("Randomness fulfilled:", randomResult);
-		emit RandomnessFulfilled(requestId, randomResult, requester, latestIds[requester]);
+		console.log("Randomness fulfilled:", randomness);
+		emit RandomnessFulfilled(requestId, randomness, requester, latestIds[requester]);
 	}
 }
