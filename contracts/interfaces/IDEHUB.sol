@@ -56,7 +56,7 @@ interface IDEHUB {
   function minToDistribution (  ) external view returns ( uint256 );
   function minToExpenses (  ) external view returns ( uint256 );
   function minToLiquify (  ) external view returns ( uint256 );
-  function name (  ) external pure returns ( string );
+  function name (  ) external pure returns ( string memory );
   function owner (  ) external view returns ( address );
   function reflectionFromToken ( uint256 tAmount, bool deductTransferFee ) external view returns ( uint256 );
   function removeAddressFromLPs ( address lpAddr ) external;
@@ -82,7 +82,7 @@ interface IDEHUB {
   function setReflectionFee ( uint256 fee ) external;
   function setSellCycleHours ( uint256 hoursCycle ) external;
   function specialAddresses ( address ) external view returns ( bool );
-  function symbol (  ) external pure returns ( string );
+  function symbol (  ) external pure returns ( string memory );
   function toggleLimitExemptions ( address addr, bool allToggle, bool txToggle, bool walletToggle, bool sellToggle, bool feesToggle ) external;
   function toggleSpecialWallets ( address specialAddr, bool toggle ) external;
   function tokenFromReflection ( uint256 rAmount ) external view returns ( uint256 );
