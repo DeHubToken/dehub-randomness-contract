@@ -36,7 +36,7 @@ contract DeHubRand is VRFConsumerBase, IDeHubRand, Ownable {
 	);
 	event RandomnessFulfilled(
 		bytes32 indexed requestId, 
-		uint32 randomNumber,
+		uint256 randomNumber,
 		address indexed requester,
 		uint256 indexed id
 	);
