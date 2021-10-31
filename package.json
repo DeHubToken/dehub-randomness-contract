@@ -13,7 +13,7 @@
 		"console:testnet": "npx hardhat console --network testnet",
 		"deploy:testnet": "npx hardhat run --network testnet scripts/script-testnet.ts",
 		"deploy:mainnet": "npx hardhat run --network mainnet scripts/script-mainnet.ts",
-		"verify:mainnet": "npx hardhat verify --network mainnet --constructor-args scripts/arguments-mainnet.js"
+		"verify:mainnet": "npx hardhat verify --network mainnet --constructor-args scripts/args/mainnet.ts"
 	},
 	"repository": {
 		"type": "git",
