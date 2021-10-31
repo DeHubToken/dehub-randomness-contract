@@ -48,8 +48,8 @@ async function main() {
 
 	// Deploys the contract
 	randGenInst = await randGenFact.deploy(
-		chainLink.testnet.vrfCoordinator,
-		chainLink.testnet.token
+		chainLink.mainnet.vrfCoordinator,
+		chainLink.mainnet.token
 	);
 
 	await randGenInst.setKeyHash(chainLink.mainnet.keyHash);
