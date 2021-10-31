@@ -90,7 +90,7 @@ describe('DeHubRand contract', function () {
 			)
 				.to.emit(randGenInst, testing.events.randFullfilled)
 				// Checking that emitted event contains correct information
-				.withArgs(requestId, testing.randomReturn, mockConsumerInst.address, 1);
+				.withArgs(requestId, testing.mockSeed, mockConsumerInst.address, 1);
 		});
 	});
 });
